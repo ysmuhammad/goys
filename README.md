@@ -1,1 +1,1 @@
-# goys
+# Sysadmin who is learning GO, so don't bully me haha

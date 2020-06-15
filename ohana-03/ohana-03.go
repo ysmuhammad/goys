@@ -5,14 +5,22 @@ import (
 )
 
 func main() {
-	fmt.Printf("executing hi!\n")
+	fmt.Printf("- Executing hi!\n")
 	hi()
 
-	fmt.Printf("\nexecuting odd checking!\n")
+	fmt.Printf("\n- Executing odd checking!\n")
 	odd()
 
-	fmt.Printf("\nexecuting switch!\n")
+	fmt.Printf("\n- Executing switch!\n")
 	test()
+
+	fmt.Printf("\n- Executing switch using true | false clause!\n")
+	test2()
+
+	fmt.Printf("\n- Executing switch input\n")
+	ys := unhex(5)
+	fmt.Printf("YS value by unhex func: %v", ys)
+
 }
 
 func hi() {
@@ -54,12 +62,36 @@ func test() {
 	s := "beach"
 
 	switch s {
-	case "beach":
+	case "beach", "hawaii", "bali":
 		fmt.Println("best place to chill")
-	case "mountain":
+	case "mountain", "everest", "alpine":
 		fmt.Println("not that good")
 		fallthrough
 	default:
 		fmt.Println("exec this by fallthrough")
 	}
+}
+
+func test2() {
+
+	switch 2 == 2 {
+	case false:
+		fmt.Println("False!")
+	case true:
+		fmt.Println("True!")
+	default:
+		fmt.Println("no matching clause!")
+	}
+}
+
+func unhex(c byte) byte {
+	switch {
+	case '0' <= c && c <= '9':
+		return c - '0'
+	case 'a' <= c && c <= 'f':
+		return c - 'a' + 10
+	case 'A' <= c && c <= 'F':
+		return c - 'A' + 10
+	}
+	return c
 }

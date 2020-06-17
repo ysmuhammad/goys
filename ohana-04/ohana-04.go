@@ -86,5 +86,18 @@ func testMap() {
 		"Indonesia": "Bali",
 		"Thailand":  "Bangkok",
 	}
-	fmt.Printf("Best city on Hawaii? %v", map1["Hawaii"])
+	fmt.Printf("Best city on Hawaii? %v\n\n", map1["Hawaii"])
+
+	y, ok := map1["Indonesia"]
+	fmt.Printf("Type of y: %T\nType of ok: %T\n\n", y, ok)
+	fmt.Printf("Value of y: %v\nValue of ok: %v\n", y, ok)
+
+	fmt.Println("\n============")
+
+	map1["Hawaii"] = "Oahu"
+
+	for k, v := range map1 {
+		fmt.Printf("\nKey: %v\n", k)
+		fmt.Printf("Key: %v\n", v)
+	}
 }

@@ -45,6 +45,7 @@ func main() {
 
 	champ(roo)
 	champ(merci)
+
 }
 
 func sl(y string, x ...int) (int, string) {
@@ -83,6 +84,6 @@ func champ(c champions) {
 	case players:
 		fmt.Printf("\nYes you are the champion, %v %v!", c.(players).lastName, c.(players).firstName)
 	case cars:
-		fmt.Printf("\nBest car out there is: %v %v", c.(cars).color, c.(cars).tipe)
+		fmt.Printf("\nBest car out there is: %v %v\n", c.(cars).color, c.(cars).tipe)
 	}
 }

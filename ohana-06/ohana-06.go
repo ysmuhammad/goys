@@ -52,12 +52,24 @@ func main() {
 	champ(roo)
 	champ(merci)
 
-	returnFunc()
-	fmt.Printf("\n%v\n", returnFunc()())
+	printFunc := returnFunc()("Assalamualaikum Wr Wb!")
+	fmt.Printf("\n%v\n", printFunc)
 
-	// v := rt()
-	// fmt.Println(v)
+	fmt.Println("\nCallback function integer:")
+	val := []int{1, 2, 3, 4, 5}
+	callbackFunc := even(sum, val...)
+	fmt.Println(callbackFunc)
 
+	fmt.Println("Callback function string:")
+	wo := []string{"what", "the", "fuck", "is", "going", "on", "?"}
+	p := wordsUp(wo...)
+	fmt.Println("No filter:", p)
+
+	callbackFunc2 := goodWords(wordsUp, wo...)
+	fmt.Println("Only good words:", callbackFunc2)
+
+	recur := rec(4)
+	fmt.Println("Print recursive:", recur)
 }
 
 func sl(y string, x ...int) (int, string) {
@@ -100,8 +112,65 @@ func champ(c champions) {
 	}
 }
 
-func returnFunc() func() string {
-	return func() string {
-		return "End of!"
+// Returning a function
+func returnFunc() func(y string) string {
+	return func(x string) string {
+		yesFunc := x
+		return yesFunc
 	}
+}
+
+// Callback function
+// Sum func
+func sum(xi ...int) int {
+	total := 0
+	for _, v := range xi {
+		total += v
+	}
+	return total
+}
+
+func even(f func(i ...int) int, vi ...int) int {
+	var yi []int
+	for _, v := range vi {
+		if v%2 == 0 {
+			yi = append(yi, v)
+		}
+	}
+	return f(yi...)
+}
+
+func wordsUp(w ...string) string {
+	var allWords string
+	for i, v := range w {
+		if i == 0 {
+			allWords = allWords + v
+		} else {
+			allWords = allWords + " " + v
+		}
+	}
+	return allWords
+}
+
+func goodWords(f func(w ...string) string, si ...string) string {
+	var goodWordsArr []string
+	for _, val := range si {
+		if val == "fuck" {
+			continue
+		} else if val == "the" {
+			continue
+		} else {
+			goodWordsArr = append(goodWordsArr, val)
+		}
+	}
+	return f(goodWordsArr...)
+}
+
+//Recursive
+func rec(n int) int {
+	total := 1
+	for ; n > 0; n-- {
+		total *= n
+	}
+	return total
 }

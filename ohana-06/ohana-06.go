@@ -137,7 +137,8 @@ func even(f func(i ...int) int, vi ...int) int {
 			yi = append(yi, v)
 		}
 	}
-	return f(yi...)
+	totalEven := f(yi...)
+	return totalEven
 }
 
 func wordsUp(w ...string) string {

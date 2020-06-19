@@ -25,6 +25,12 @@ func main() {
 	dv, ys := sl("alana", xi...)
 	fmt.Printf("Momma: %v\nTotal: %v", dv, ys)
 
+	// Anon function
+	gold := func(x int) {
+		fmt.Println("Gold number:", x)
+	}
+	gold(99)
+
 	roo := players{
 		firstName: "Rooney",
 		lastName:  "Wayne",
@@ -45,6 +51,12 @@ func main() {
 
 	champ(roo)
 	champ(merci)
+
+	returnFunc()
+	fmt.Printf("\n%v\n", returnFunc()())
+
+	// v := rt()
+	// fmt.Println(v)
 
 }
 
@@ -85,5 +97,11 @@ func champ(c champions) {
 		fmt.Printf("\nYes you are the champion, %v %v!", c.(players).lastName, c.(players).firstName)
 	case cars:
 		fmt.Printf("\nBest car out there is: %v %v\n", c.(cars).color, c.(cars).tipe)
+	}
+}
+
+func returnFunc() func() string {
+	return func() string {
+		return "End of!"
 	}
 }

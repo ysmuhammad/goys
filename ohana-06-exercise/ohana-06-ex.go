@@ -65,10 +65,6 @@ func info(s shape) string {
 	return sVal
 }
 
-func returnFunc() func() int {
-
-}
-
 func main() {
 	s, i := bar()
 	fmt.Println(s, i)
@@ -83,7 +79,7 @@ func main() {
 		radius: 16,
 	}
 	v1 := cirval.area()
-	fmt.Println("Cirlce area:", v1)
+	fmt.Printf("Cirlce area: %s\n", v1)
 
 	sqval := square{
 		panjang: 30,

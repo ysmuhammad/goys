@@ -4,18 +4,6 @@ import (
 	"fmt"
 )
 
-type players struct {
-	firstName string
-	lastName  string
-	age       int
-	cars
-}
-
-type cars struct {
-	tipe  string
-	color string
-}
-
 func main() {
 	xi := []int{
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -70,6 +58,18 @@ func main() {
 
 	recur := rec(4)
 	fmt.Println("Print recursive:", recur)
+}
+
+type players struct {
+	firstName string
+	lastName  string
+	age       int
+	cars
+}
+
+type cars struct {
+	tipe  string
+	color string
 }
 
 func sl(y string, x ...int) (int, string) {

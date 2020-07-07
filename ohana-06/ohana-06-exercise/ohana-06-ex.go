@@ -34,12 +34,12 @@ type square struct {
 	lebar   float64
 }
 
-func (s square) area() float64 {
+func (s *square) area() float64 {
 	luas := s.panjang * s.lebar
 	return luas
 }
 
-func (c circle) area() float64 {
+func (c *circle) area() float64 {
 	const pi = 3.14
 
 	luas := pi * c.radius * c.radius
@@ -52,16 +52,7 @@ type shape interface {
 
 func info(s shape) string {
 	var sVal string
-	switch s.(type) {
-	case circle:
-		value := s.area()
-		sVal := fmt.Sprintf("This is a circle, area: %v", value)
-		return sVal
-	case square:
-		value := s.area()
-		sVal := fmt.Sprintf("This is a square, area: %v", value)
-		return sVal
-	}
+	sVal = fmt.Sprintf("Total Area: %#v", s.area())
 	return sVal
 }
 
@@ -75,11 +66,13 @@ func main() {
 	}
 	speak(ys)
 
+	fmt.Println("========================")
+
 	cirval := circle{
 		radius: 16,
 	}
 	v1 := cirval.area()
-	fmt.Printf("Cirlce area: %s\n", v1)
+	fmt.Println("Circle area: ", v1)
 
 	sqval := square{
 		panjang: 30,
@@ -88,6 +81,14 @@ func main() {
 	v2 := sqval.area()
 	fmt.Println("Square area: ", v2)
 
-	v3 := info(cirval)
+	v3 := info(&cirval)
 	fmt.Println(v3)
+
+	fmt.Println("========================")
+
+	var test *string
+	test2 := "Test value!"
+	test = &test2
+	fmt.Printf("Value of test: %v", *test)
+
 }

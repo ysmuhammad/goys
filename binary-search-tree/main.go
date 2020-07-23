@@ -4,22 +4,10 @@ import (
 	"fmt"
 )
 
-type Tree struct {
-	root *Node
-}
-
 type Node struct {
 	key   byte
 	left  *Node
 	right *Node
-}
-
-func (t *Tree) insert(data byte) {
-	if t.root == nil {
-		t.root = &Node{key: data}
-	} else {
-		t.root.insert(data)
-	}
 }
 
 func (n *Node) insert(data byte) {
@@ -69,7 +57,7 @@ func printInOrder(n *Node) {
 }
 
 func main() {
-	var t Tree
+	var t Node
 
 	t.insert('F')
 	t.insert('B')
@@ -82,17 +70,12 @@ func main() {
 	t.insert('H')
 
 	fmt.Printf("Pre Order: ")
-	printPreOrder(t.root)
+	printPreOrder(&t)
 	fmt.Println()
 	fmt.Printf("Post Order: ")
-	printPostOrder(t.root)
+	printPostOrder(&t)
 	fmt.Println()
 	fmt.Printf("In Order: ")
-	printInOrder(t.root)
+	printInOrder(&t)
 	fmt.Println()
-
-	// ys := "f"
-	// // var dv *string
-	// dv := []byte(ys)
-	// fmt.Printf("ys: %c", dv)
 }

@@ -1,10 +1,7 @@
 package main
 
 import (
-	"flag"
 	"log"
-	"os"
-	"path/filepath"
 
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/runtime"
@@ -15,15 +12,8 @@ import (
 )
 
 func main() {
-	var kubeconfig *string
-	if home := homeDir(); home != "" {
-		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
-	} else {
-		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
-	}
-
-	flag.Parse()
-	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+	//flag.Parse()
+	config, err := clientcmd.BuildConfigFromFlags("", "")
 	if err != nil {
 		log.Panic(err.Error())
 	}
@@ -52,17 +42,9 @@ func main() {
 			log.Printf("============\n")
 			log.Printf("Event Message: %s", mObj.Message)
 			log.Printf("Reason: %s", mObj.Reason)
-			log.Printf("ObjectMeta: %s", mObj.ObjectMeta)
 		},
 	})
 
 	informer.Run(stopper)
 
-}
-
-func homeDir() string {
-	if h := os.Getenv("HOME"); h != "" {
-		return h
-	}
-	return os.Getenv("USERPROFILE")
 }

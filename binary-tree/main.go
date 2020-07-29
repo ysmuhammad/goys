@@ -25,7 +25,9 @@ func main() {
 	// Second chnannel
 	t2 := tree.New(2)
 	c2 := make(chan int)
+
 	go Walker(t2, c2)
+
 	func() {
 		fmt.Println("Channel value from tree2:")
 		for i := range c2 {

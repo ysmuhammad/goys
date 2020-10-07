@@ -9,7 +9,7 @@ import (
 func main() {
 	fmt.Println("=== Binary Tree with channel ===")
 	// First channel
-	t := tree.New(1)
+	t := tree.New(5)
 	ch := make(chan int)
 
 	go Walker(t, ch)

@@ -25,8 +25,8 @@ func main() {
 	fmt.Println("2d array: ", twoD)
 	fmt.Println("2d [2][0]: ", twoD[2][0])
 
-	var threeD [2][3][3]int
-	for i := 0; i < 2; i++ {
+	var threeD [3][3][3]int
+	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
 			for z := 0; z < 3; z++ {
 				threeD[i][j][z] = i + j + z

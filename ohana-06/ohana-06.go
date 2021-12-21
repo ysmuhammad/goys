@@ -58,6 +58,9 @@ func main() {
 
 	recur := rec(4)
 	fmt.Println("Print recursive:", recur)
+
+	test := "abcde"
+	fmt.Println(string(test[4]))
 }
 
 type players struct {
